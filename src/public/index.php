@@ -48,8 +48,8 @@ if(!empty($notes)){
           <td><?php echo $note['theme']; ?></td>
           <td><?php echo $note['contents']; ?></td>
           <td><?php echo $note['created_at']; ?></td>
-          <td><a href="./edit.php?id=<?php echo $notes['id']; ?>">編集</a></td>
-          <td><a href="./delete.php?id=<?php echo $notes['id']; ?>">削除</a></td>
+          <td><a href="./edit.php?id=<?php echo $note['id']; ?>">編集</a></td>
+          <td><a href="./delete.php?id=<?php echo $note['id']; ?>">削除</a></td>
         </tr>
       <?php endforeach; ?>
 
