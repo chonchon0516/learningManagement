@@ -45,9 +45,9 @@ if(!empty($notes)){
 
       <?php foreach ($notes as $note): ?>
         <tr>
-          <td><?php echo $notes['theme']; ?></td>
-          <td><?php echo $notes['contents']; ?></td>
-          <td><?php echo $notes['created_at']; ?></td>
+          <td><?php echo $note['theme']; ?></td>
+          <td><?php echo $note['contents']; ?></td>
+          <td><?php echo $note['created_at']; ?></td>
           <td><a href="./edit.php?id=<?php echo $notes['id']; ?>">編集</a></td>
           <td><a href="./delete.php?id=<?php echo $notes['id']; ?>">削除</a></td>
         </tr>

@@ -9,7 +9,7 @@ $pdo = new PDO(
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-$sql = "SELECT * FROM learningnote where id = $id";
+$sql = "SELECT * FROM learningnotes where id = $id";
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $note = $statement->fetch();
