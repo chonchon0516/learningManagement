@@ -24,7 +24,7 @@ class LearningManager
     $notes = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $notes;
   }
-  public function findByIdEdit($id)
+  public function findById($id)
   {
     $sql = "SELECT * FROM learningnotes where id = $id";
     $statement = $this->pdo->prepare($sql);
