@@ -1,18 +1,11 @@
 <?php
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=learningmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\LearningManager;
 
+$learningManager = new LearningManager();
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$note = $learningManager->findById($id);
 
-$sql = "SELECT * FROM learningnotes where id = $id";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-$note = $statement->fetch();
 ?>
 
 <body>

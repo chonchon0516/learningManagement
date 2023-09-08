@@ -1,12 +1,8 @@
 <?php
 
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=learningmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\LearningManager;
+
 
 $contents = filter_input(INPUT_POST, 'contents');
 $theme= filter_input(INPUT_POST, 'theme');
@@ -14,12 +10,8 @@ $theme= filter_input(INPUT_POST, 'theme');
 
 // [解説！]ガード節になっている
 if (!empty($theme) && !empty($contents)) {
-    $sql = 'INSERT INTO `learningnotes`(`theme`, `contents`) VALUES(:theme, :contents)';
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(':theme', $theme, PDO::PARAM_STR);
-    $statement->bindValue(':contents', $contents, PDO::PARAM_STR);
-    $statement->execute();
-
+    $learningManager = new LearningManager();
+    $learningManager->insertUserData($contents,$theme);
     // [解説！]リダイレクト処理
     header('Location: ./index.php');
     // [解説！]リダイレクトしても処理が一番下まで続いてしまうので「exit」しておこう！！！

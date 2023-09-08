@@ -1,16 +1,10 @@
 <?php
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=learningmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\LearningManager;
 
-$sql = "SELECT * FROM learningnotes";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-$notes = $statement->fetchAll(PDO::FETCH_ASSOC);
+$learningManager = new LearningManager();
+$notes = $learningManager->fetchAllLearningnotes();
+
 foreach ($notes as $key => $value) {
     $standard_key_array[$key] = $value['created_at'];
 }
